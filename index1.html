@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>2nd Page</title>
+	<style type="text/css">
+		.h1 {
+				font-family: "Times New Roman", Times, serif;
+				color: rgb(161, 152, 130);
+				text-align: center;
+				font-size: 30px;
+		}
+		textarea {
+ 				height: 200px;
+ 				width: 500px;
+ 				margin: auto;
+ 				border: 0;
+ 				border-radius: 10px;
+ 				font-size: 16px;
+ 				outline: none;
+ 			}
+		.textbox {
+				margin: auto;
+				margin-top: -20px;
+				width: 37%;
+				align-content: center;
+				height: 200px;
+ 				width: 500px;
+ 				margin: auto;
+ 				display: flex;
+ 				justify-content: center;
+ 				align-items: center;
+ 				padding: 60px 55px;
+ 				background-color: rgb(230, 221, 198);
+ 				border-radius: 10px;
+		}
+		.CF{
+				font-family: "Times New Roman", Times, serif;
+				color: rgb(161, 152, 130);
+				text-align: center;
+				font-size: 30px;
+		}
+		.input{
+				margin: auto;
+				margin-top: -20px;
+				width: 25%;
+				align-content: center;
+				height: 200px;
+ 				width: 500px;
+ 				margin: auto;
+ 				display: flex;
+ 				justify-content: center;
+ 				align-items: center;
+ 				padding: 100px 5px;
+ 				background-color: rgb(230, 221, 198);
+ 				border-radius: 10px;
+ 				margin-bottom: 60px;	
+ 		}
+
+			form input{
+				border: 0;
+				margin: 5px 0;
+				padding: 20px;
+				outline: none;
+				font-size: 16px;
+				border-radius: 25px;				
+			}
+			form button{
+				padding: 15px;
+				background: rgb(161, 152, 130);
+				color: #fff;
+				font-size: 18px;
+				border: 0;
+				border-radius: 20px;
+				outline: none;
+			}
+
+
+
+
+	</style>
+</head>
+	<body style="background-color: #FEF7DC">
+
+		<div class="h1">
+			<h1>What are you thinking?</h1>
+		</div>
+
+		<div class="textbox">	
+			<textarea name="comments" id="centeredTextbox" placeholder=" Type it here..." required></textarea>
+		</div>
+
+		<div class="CF">
+			<h1>Contact Form:</h1> 
+		</div>
+
+		<div class="input">
+		<form onsubmit="sendEmail(); reset(); return false;">
+				<input type="text" name="Name" placeholder= "Full Name" required>
+			<br>
+				<input type="email" name="Email" placeholder="Gmail" required>
+			<br>
+				<input type="message" name="Message" placeholder="Message" required>
+			<br>
+    			<button>Submit!</button>
+		</form>
+		</div>
+		<script>
+      const urlParams = new URLSearchParams(window.location.search);
+    const name = decodeURIComponent(urlParams.get('name'));
+    document.getElementById("userName").textContent = name;
+
+    function showSecretInput() {
+      document.getElementById("secretInputContainer").style.display = "block";
+    }
+
+    function sendReason() {
+      var reason = document.getElementById("secretInput").value;
+      var name = decodeURIComponent(urlParams.get('name'));
+
+      var scriptUrl = "https://script.google.com/macros/s/AKfycbzdsJ032iVyZ5O4jFrEFwd7FE3lVY94-CD0DUAJ0sSkEE6f19NrDyUY_Hx24PCyuMS7/exec";
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", scriptUrl, true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            alert("Reason sent!");
+          } else {
+            alert("An error occurred while sending the reason. Please try again.");
+          }
+        }
+      };
+
+      xhr.send("name=" + encodeURIComponent(name) + "&reason=" + encodeURIComponent(reason));
+    }
+
+    function redirectToSadPage() {
+      window.location.href = "index3.html";
+    }
+</script>
+</style>
+</body>
+</html>
